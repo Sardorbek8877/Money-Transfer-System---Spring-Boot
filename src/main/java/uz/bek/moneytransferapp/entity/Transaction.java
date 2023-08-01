@@ -1,29 +1,30 @@
 package uz.bek.moneytransferapp.entity;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "users")
-public class User {
+@Entity
+public class Transaction {
 
     @Id
     @GeneratedValue
     private UUID id;
 
-    @Column(nullable = false)
-    private String username;
+    private BigDecimal amount;
 
-    private String password;
+    private String type;
+
+    @ManyToOne
+    private Card card;
 }

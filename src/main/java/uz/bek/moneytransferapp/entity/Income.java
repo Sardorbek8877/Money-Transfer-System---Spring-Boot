@@ -5,29 +5,28 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Date;
-import java.util.ArrayList;
-import java.util.List;
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.UUID;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Card {
+public class Income {
 
     @Id
     @GeneratedValue
     private UUID id;
 
-    private String username;
+    private BigDecimal amount;
 
-    @Column(nullable = false, unique = true)
-    private String cardNumber;
+    private Date date;
 
-    private double balance;
+    private UUID from_card_id;
 
-    private Date expired_date;
+    private UUID to_card_id;
 
-    private boolean active;
+    @ManyToOne
+    private Card card;
 }
