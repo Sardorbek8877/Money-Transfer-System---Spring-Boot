@@ -6,21 +6,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import uz.bek.moneytransferapp.entity.Income;
-import uz.bek.moneytransferapp.repository.IncomeRepository;
+import uz.bek.moneytransferapp.entity.Outcome;
 import uz.bek.moneytransferapp.service.IncomeService;
+import uz.bek.moneytransferapp.service.OutcomeService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/income")
-public class IncomeController {
+@RequestMapping("/api/outcome")
+public class OutcomeController {
 
     @Autowired
-    IncomeService incomeService;
+    OutcomeService outcomeService;
 
     @GetMapping
-    public ResponseEntity<List<Income>> getIncomes(){
-        List<Income> incomes = incomeService.getIncomes();
-        return ResponseEntity.ok(incomes);
+    public ResponseEntity<List<Outcome>> getOutcomes(){
+        List<Outcome> outcomes = outcomeService.getOutcomes();
+        return ResponseEntity.ok(outcomes);
     }
 }

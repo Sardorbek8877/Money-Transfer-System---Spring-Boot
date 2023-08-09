@@ -23,10 +23,11 @@ public class Income {
 
     private Date date;
 
-    private UUID from_card_id;
+    private String sourceCardNumber;
 
-    private UUID to_card_id;
-
-    @ManyToOne
-    private Card card;
+    public Income(String sourceCardNumber,  BigDecimal amount, Date date) {
+        this.amount = amount;
+        this.date = date;
+        this.sourceCardNumber = sourceCardNumber;
+    }
 }

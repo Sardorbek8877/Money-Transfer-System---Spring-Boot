@@ -7,6 +7,7 @@ import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,5 +26,9 @@ public class User {
     @Column(nullable = false)
     private String username;
 
+    @Column(nullable = false, unique = true)
+    private String email;
+
+    @Column(nullable = false)
     private String password;
 }

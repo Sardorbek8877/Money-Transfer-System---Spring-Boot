@@ -1,14 +1,12 @@
 package uz.bek.moneytransferapp.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Data
@@ -18,13 +16,21 @@ import java.util.UUID;
 public class Transaction {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id;
 
+    private LocalDateTime transactionDateTime;
     private BigDecimal amount;
-
-    private String type;
+    private boolean incoming;
 
     @ManyToOne
+    @JoinColumn(name = "card_id")
     private Card card;
+
+    public Transaction(Card card, BigDecimal amount, boolean incoming) {
+        this();
+        this.card = card;
+        this.amount = amount;
+        this.incoming = incoming;
+    }
 }

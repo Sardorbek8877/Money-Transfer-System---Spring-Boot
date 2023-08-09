@@ -21,14 +21,13 @@ public class Outcome {
 
     private BigDecimal amount;
 
-    private BigDecimal commision_amount;
-
     private Date date;
 
-    private UUID from_card_id;
+    private String destinationCardNumber;
 
-    private UUID to_card_id;
-
-    @ManyToOne
-    private Card card;
+    public Outcome(String destinationCardNumber,  BigDecimal amount, Date date) {
+        this.amount = amount;
+        this.date = date;
+        this.destinationCardNumber = destinationCardNumber;
+    }
 }
